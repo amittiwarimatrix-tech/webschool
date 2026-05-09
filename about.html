@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us - Adarsh Vidyalaya</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.about-section { background: white; }
+.about-grid { display: flex; gap: 70px; align-items: flex-start; }
+.about-visual { flex: 0 0 420px; position: relative; }
+.about-card {
+  width: 100%; height: 420px;
+  background: linear-gradient(135deg, var(--emerald), #1a5276);
+  border-radius: 24px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  color: white; text-align: center; padding: 40px;
+  box-shadow: 0 20px 50px rgba(10,124,92,0.3);
+}
+.about-card .icon { font-size: 90px; margin-bottom: 20px; }
+.about-card h3 { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 900; }
+.about-card p { font-size: 15px; opacity: 0.8; margin-top: 8px; }
+.gold-badge {
+  position: absolute; bottom: -20px; right: -20px;
+  background: var(--gold); border-radius: 50%;
+  width: 110px; height: 110px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  box-shadow: 0 8px 20px rgba(244,166,36,0.4);
+  font-weight: 900; font-size: 13px; text-align: center; color: var(--dark); line-height: 1.3;
+}
+.gold-badge strong { font-size: 30px; display: block; }
+.about-text { flex: 1; padding-top: 10px; }
+.about-text p { font-size: 16px; color: #555; line-height: 1.9; margin-bottom: 18px; }
+.feat-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+.feat-tag {
+  background: var(--light-green); color: var(--emerald);
+  padding: 8px 18px; border-radius: 20px; font-size: 14px; font-weight: 600;
+}
+
+/* VISION MISSION */
+.vm-section { background: var(--cream); }
+.vm-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 50px; }
+.vm-card {
+  background: white; border-radius: 20px; padding: 36px 28px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  border-top: 5px solid var(--emerald);
+  transition: transform 0.3s;
+}
+.vm-card:nth-child(2) { border-top-color: var(--sky); }
+.vm-card:nth-child(3) { border-top-color: var(--gold); }
+.vm-card:hover { transform: translateY(-6px); }
+.vm-icon { font-size: 46px; margin-bottom: 16px; }
+.vm-card h3 { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 700; margin-bottom: 12px; }
+.vm-card p { font-size: 15px; color: #666; line-height: 1.8; }
+
+/* FOUNDERS */
+.founders { background: white; }
+.founders-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 28px; margin-top: 50px; }
+.founder-card {
+  background: var(--cream); border-radius: 20px; padding: 36px 28px; text-align: center;
+  transition: transform 0.3s; box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+.founder-card:hover { transform: translateY(-6px); }
+.founder-avatar {
+  width: 90px; height: 90px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--emerald), var(--sky));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 40px; margin: 0 auto 16px;
+  box-shadow: 0 6px 20px rgba(10,124,92,0.2);
+}
+.founder-card h4 { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; margin-bottom: 4px; }
+.founder-card .role { color: var(--emerald); font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 14px; }
+.founder-card p { font-size: 14px; color: #666; line-height: 1.7; }
+
+/* ACHIEVEMENTS */
+.achievements { background: linear-gradient(135deg, #0a7c5c, #1a3a6e); color: white; }
+.ach-header { text-align: center; margin-bottom: 50px; }
+.ach-header h2 { color: white; }
+.ach-header .section-tag { background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.9); }
+.ach-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+.ach-item {
+  background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 16px; padding: 28px 20px; text-align: center;
+  backdrop-filter: blur(10px); transition: background 0.3s;
+}
+.ach-item:hover { background: rgba(255,255,255,0.18); }
+.ach-item .icon { font-size: 36px; margin-bottom: 12px; }
+.ach-item h4 { font-weight: 700; font-size: 16px; color: var(--gold); margin-bottom: 4px; }
+.ach-item p { font-size: 13px; color: rgba(255,255,255,0.7); }
+
+@media (max-width: 768px) {
+  .about-grid { flex-direction: column; }
+  .about-visual { flex: none; width: 100%; }
+  .vm-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- PAGE LOADER -->
+<div id="pageLoader">
+  <div class="loader-logo">A</div>
+  <div class="loader-bar"><div class="loader-fill"></div></div>
+</div>
+
+  <div class="top-bar">
+  <div class="top-bar-left">
+    <a href="tel:+919783262999">📞 97832-62999</a>
+    <a href="/cdn-cgi/l/email-protection#1a2b2b2c282e5a7978697f6972737169727b347374"><img src="https://cdn.simpleicons.org/gmail/white" style="width:14px;height:14px;"> <span class="__cf_email__" data-cfemail="b08181868284f0d3d2c3d5c3d8d9dbc3d8d19ed9de">[email&#160;protected]</span></a>
+  </div>
+  <div class="top-bar-center">
+    🎓 Admission Open for 2026–27
+  </div>
+  <div class="top-bar-right">
+  <a href="#" target="_blank">
+    <img src="https://cdn.simpleicons.org/facebook/white" alt="Facebook">
+  </a>
+  <a href="#" target="_blank">
+    <img src="https://cdn.simpleicons.org/instagram/white" alt="Instagram">
+  </a>
+  <a href="#" target="_blank">
+    <img src="https://cdn.simpleicons.org/youtube/white" alt="YouTube">
+  </a>
+  <a href="#" target="_blank">
+    <img src="https://cdn.simpleicons.org/whatsapp/white" alt="WhatsApp">
+  </a>
+  <a href="#" target="_blank">
+    <img src="https://cdn.simpleicons.org/x/white" alt="X (Twitter)">
+  </a>
+  </div>
+</div>
+
+<nav>
+  <a href="index.html" class="nav-logo"><div class="logo-icon">A</div><span>Adarsh Vidyalaya</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html" class="active">About</a></li>
+    <li><a href="curriculum.html">Curriculum</a></li>
+    <li><a href="facilities.html">Campus</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="admissions.html">Admissions</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="admissions.html" class="nav-btn">Apply Now</a>
+
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<!-- MOBILE NAV OVERLAY -->
+<div class="nav-overlay" id="navOverlay" onclick="closeMenu()"></div>
+
+<!-- MOBILE NAV DRAWER -->
+<div class="mobile-nav" id="mobileNav">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html" class="active">About</a></li>
+    <li><a href="curriculum.html">Curriculum</a></li>
+    <li><a href="facilities.html">Campus</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="admissions.html">Admissions</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="admissions.html" class="mobile-apply-btn">Apply Now →</a>
+</div>
+
+<div class="page-hero">
+  <div class="badge">हमारे बारे में • About Us</div>
+  <h1>Our <span>Story & Legacy</span></h1>
+  <p>25 years of shaping young minds with values, knowledge, and the courage to dream big.</p>
+</div>
+
+<!-- ABOUT -->
+<section class="about-section">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-visual">
+        <div class="about-card">
+          <div class="icon">🏫</div>
+          <h3>Adarsh Vidyalaya</h3>
+          <p>Est. 2000 · Sardarshahr, Rajasthan</p>
+        </div>
+        <div class="gold-badge"><strong>A+</strong>Grade School</div>
+      </div>
+      <div class="about-text">
+        <span class="section-tag">Our Story</span>
+        <h2>Building <span>Futures</span> Since 2000</h2>
+        <p>Adarsh Vidyalaya was founded in 2000 with a singular vision — to provide world-class education rooted in Indian values to the children of Rajasthan. What began as a small school with 200 students has grown into one of the most respected educational institutions in the region.</p>
+        <p>हमारा विद्यालय हर बच्चे के सर्वांगीण विकास के लिए प्रतिबद्ध है। शिक्षा, संस्कार और खेल-कूद का यह अद्भुत संगम यहाँ हर विद्यार्थी को एक उज्जवल भविष्य की ओर ले जाता है।</p>
+        <p>Today, we are home to over 1,500 students from across Rajasthan, guided by 120+ dedicated faculty members who believe in nurturing every child's unique potential.</p>
+        <div class="feat-tags">
+          <div class="feat-tag">✅ CBSE Affiliated</div>
+          <div class="feat-tag">🏅 Award Winning</div>
+          <div class="feat-tag">🌿 Green Campus</div>
+          <div class="feat-tag">🌐 Holistic Education</div>
+          <div class="feat-tag">🤝 Career Guidance</div>
+          <div class="feat-tag">🧘 Yoga & Wellness</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISION MISSION VALUES -->
+<section class="vm-section">
+  <div class="container">
+    <div style="text-align:center; margin-bottom:10px">
+      <span class="section-tag">Our Foundation</span>
+      <h2>Vision, Mission & <span>Values</span></h2>
+    </div>
+    <div class="vm-grid">
+      <div class="vm-card">
+        <div class="vm-icon">🔭</div>
+        <h3>Our Vision</h3>
+        <p>To be Rajasthan's most trusted institution that nurtures globally aware, compassionate, and skilled individuals who contribute meaningfully to society.</p>
+      </div>
+      <div class="vm-card">
+        <div class="vm-icon">🎯</div>
+        <h3>Our Mission</h3>
+        <p>To provide holistic education that combines academic rigor with moral values, physical wellness, and emotional intelligence — preparing students for life, not just exams.</p>
+      </div>
+      <div class="vm-card">
+        <div class="vm-icon">💎</div>
+        <h3>Core Values</h3>
+        <p>Integrity, Respect, Excellence, Curiosity, and Service. These five pillars guide every decision we make and every interaction within our school community.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEADERSHIP -->
+<section class="founders">
+  <div class="container">
+    <div style="text-align:center; margin-bottom:10px">
+      <span class="section-tag">Our Leadership</span>
+      <h2>The People Behind <span>Adarsh</span></h2>
+    </div>
+    <div class="founders-grid">
+      <div class="founder-card">
+        <div class="founder-avatar">👨‍💼</div>
+        <h4>Shri Mohan Lal Gupta</h4>
+        <div class="role">Founder & Chairman</div>
+        <p>A visionary educationist who dedicated his life to bringing quality education to rural Rajasthan.</p>
+      </div>
+      <div class="founder-card">
+        <div class="founder-avatar">👨‍🏫</div>
+        <h4>Dr. Ramesh Kumar Sharma</h4>
+        <div class="role">Principal</div>
+        <p>25+ years in education. Committed to building character and academic excellence in every student.</p>
+      </div>
+      <div class="founder-card">
+        <div class="founder-avatar">👩‍🏫</div>
+        <h4>Mrs. Sunita Mathur</h4>
+        <div class="role">Vice Principal</div>
+        <p>Expert in student counselling and academic planning. Drives the school's holistic curriculum design.</p>
+      </div>
+      <div class="founder-card">
+        <div class="founder-avatar">👨‍🔬</div>
+        <h4>Mr. Ajay Singh Rathore</h4>
+        <div class="role">Academic Director</div>
+        <p>Leads curriculum innovation and teacher development to keep Adarsh at the forefront of education.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section class="achievements">
+  <div class="container">
+    <div class="ach-header">
+      <span class="section-tag">🏆 Our Achievements</span>
+      <h2>Awards & <span style="color:var(--gold)">Recognition</span></h2>
+    </div>
+    <div class="ach-grid">
+      <div class="ach-item"><div class="icon">🥇</div><h4>Best School Award</h4><p>Rajasthan Education Dept. 2023</p></div>
+      <div class="ach-item"><div class="icon">🎖️</div><h4>CBSE Excellence</h4><p>Top 10 in Rajasthan 2022</p></div>
+      <div class="ach-item"><div class="icon">🌿</div><h4>Green School</h4><p>Ministry of Environment 2021</p></div>
+      <div class="ach-item"><div class="icon">🏃</div><h4>Sports Champion</h4><p>State Level Inter-School 2024</p></div>
+      <div class="ach-item"><div class="icon">🔬</div><h4>Science Innovation</h4><p>NCERT Innovation Award 2023</p></div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- FLOATING WHATSAPP BUTTON -->
+<a href="https://wa.me/919783262999" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+  <span class="whatsapp-tooltip">Chat on WhatsApp</span>
+  <img src="https://cdn.simpleicons.org/whatsapp/white" alt="WhatsApp">
+</a>
+<footer>
+  <div class="footer-map">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28815.63!2d74.4418!3d28.4408!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3914a05a49bfffff%3A0x77e5ed0e0e0e0e0e!2sSardarshahr%2C%20Rajasthan%20331403!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin"
+        width="100%" height="280" style="border:0;" allowfullscreen="" loading="lazy">
+    </iframe>
+    <div class="footer-playlist">
+        <h4>📺 हमारा YouTube Channel</h4>
+        <iframe src="https://www.youtube.com/embed/videoseries?list=PLxxxxYOUR_PLAYLIST_ID" allowfullscreen></iframe>
+    </div>
+  </div>
+  <div class="footer-inner">
+    <div class="footer-col">
+      <h4>🏫 Adarsh Vidyalaya</h4>
+      <p>शिक्षा का उत्कृष्ट केंद्र<br>Sardarshahr, Rajasthan<br>A school that shapes futures.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <a href="about.html">About Us</a>
+      <a href="curriculum.html">Curriculum</a>
+      <a href="facilities.html">Campus</a>
+      <a href="gallery.html">Gallery</a>
+    </div>
+    <div class="footer-col">
+      <h4>Admissions</h4>
+      <a href="admissions.html">Apply Now</a>
+      <a href="admissions.html">Fee Structure</a>
+      <a href="testimonials.html">Testimonials</a>
+      <a href="contact.html">Contact Us</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p>📍 NH-11, Sardarshahr, Rajasthan</p>
+      <p>📞 97832-62999</p>
+      <p><img src="https://cdn.simpleicons.org/gmail/white" style="width:14px;height:14px;"> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="9dacacabafa9ddfeffeef8eef5f4f6eef5fcb3f4f3">[email&#160;protected]</a></p>
+      <div class="social-icons">
+        <a href="#" target="_blank"><img src="https://cdn.simpleicons.org/facebook/white" alt="Facebook"></a>
+        <a href="#" target="_blank"><img src="https://cdn.simpleicons.org/instagram/white" alt="Instagram"></a>
+        <a href="#" target="_blank"><img src="https://cdn.simpleicons.org/youtube/white" alt="YouTube"></a>
+        <a href="#" target="_blank"><img src="https://cdn.simpleicons.org/whatsapp/white" alt="WhatsApp"></a>
+        <a href="#" target="_blank"><img src="https://cdn.simpleicons.org/x/white" alt="X (Twitter)"></a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2025 <span>Adarsh Vidyalaya</span> · Sardarshahr, Rajasthan · All Rights Reserved</div>
+</footer>
+
+<!-- BACK TO TOP -->
+<button id="backToTop" onclick="window.scrollTo({top:0, behavior:'smooth'})">↑</button>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

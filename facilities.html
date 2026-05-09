@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Campus & Facilities - Adarsh Vidyalaya</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.fac-section { background: white; }
+.fac-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 26px; margin-top: 50px; }
+.fac-card {
+  border-radius: 20px; overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  transition: transform 0.3s, box-shadow 0.3s;
+  background: white;
+}
+.fac-card:hover { transform: translateY(-8px); box-shadow: 0 16px 40px rgba(0,0,0,0.14); }
+.fac-visual {
+  height: 160px; display: flex; align-items: center; justify-content: center;
+  font-size: 64px; position: relative;
+}
+.fac-card:nth-child(1) .fac-visual { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); }
+.fac-card:nth-child(2) .fac-visual { background: linear-gradient(135deg, #e3f2fd, #bbdefb); }
+.fac-card:nth-child(3) .fac-visual { background: linear-gradient(135deg, #fff3e0, #ffe0b2); }
+.fac-card:nth-child(4) .fac-visual { background: linear-gradient(135deg, #fce4ec, #f8bbd0); }
+.fac-card:nth-child(5) .fac-visual { background: linear-gradient(135deg, #e8eaf6, #c5cae9); }
+.fac-card:nth-child(6) .fac-visual { background: linear-gradient(135deg, #e0f7fa, #b2ebf2); }
+.fac-card:nth-child(7) .fac-visual { background: linear-gradient(135deg, #f3e5f5, #e1bee7); }
+.fac-card:nth-child(8) .fac-visual { background: linear-gradient(135deg, #fffde7, #fff9c4); }
+.fac-body { padding: 24px; }
+.fac-body h3 { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; margin-bottom: 10px; }
+.fac-body p { font-size: 14px; color: #666; line-height: 1.7; margin-bottom: 14px; }
+.fac-tag { display: inline-block; background: var(--light-green); color: var(--emerald); padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 700; }
+
+/* SPORTS */
+.sports { background: var(--cream); }
+.sports-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 16px; margin-top: 40px; }
+.sport-item {
+  background: white; border-radius: 16px; padding: 24px 16px;
+  text-align: center; box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  transition: transform 0.2s;
+}
+.sport-item:hover { transform: translateY(-4px); }
+.sport-item .s-icon { font-size: 36px; margin-bottom: 10px; }
+.sport-item h5 { font-size: 14px; font-weight: 700; }
+
+/* HOSTEL */
+.hostel { background: linear-gradient(135deg, #0a7c5c, #1a3a6e); color: white; }
+.hostel-inner { display: flex; gap: 60px; align-items: center; }
+.hostel-info { flex: 1; }
+.hostel-info .section-tag { background: rgba(255,255,255,0.15); color: white; }
+.hostel-info h2 { color: white; }
+.hostel-info p { color: rgba(255,255,255,0.8); font-size: 16px; line-height: 1.8; margin-bottom: 16px; }
+.hostel-features { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+.hostel-feat { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); color: white; padding: 8px 16px; border-radius: 20px; font-size: 14px; font-weight: 600; }
+.hostel-visual { flex: 0 0 380px; }
+.hostel-card {
+  background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 20px; padding: 36px; text-align: center; backdrop-filter: blur(10px);
+}
+.hostel-card .big-icon { font-size: 80px; margin-bottom: 20px; }
+.hostel-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 20px; }
+.h-stat { background: rgba(255,255,255,0.1); border-radius: 12px; padding: 16px; }
+.h-stat strong { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 900; color: var(--gold); display: block; }
+.h-stat span { font-size: 12px; color: rgba(255,255,255,0.7); }
+
+/* MAP -->*/
+.campus-map { background: white; }
+.map-placeholder {
+  width: 100%; height: 360px;
+  background: linear-gradient(135deg, #e8f5e9, #e3f2fd);
+  border-radius: 20px; display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  font-size: 60px; color: #ccc; margin-top: 40px;
+  box-shadow: inset 0 4px 20px rgba(0,0,0,0.05);
+  position: relative; overflow: hidden;
+}
+.map-overlay { text-align: center; }
+.map-overlay p { font-size: 18px; color: #888; margin-top: 12px; }
+.campus-areas { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 14px; margin-top: 30px; }
+.area-item {
+  background: var(--cream); border-radius: 14px; padding: 16px;
+  display: flex; align-items: center; gap: 12px; font-size: 14px; font-weight: 600;
+}
+.area-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+
+@media (max-width: 768px) {
+  .hostel-inner { flex-direction: column; }
+  .hostel-visual { flex: none; width: 100%; }
+}
+</style>
+</head>
+<body>
+
+<!-- PAGE LOADER -->
+<div id="pageLoader">
+  <div class="loader-logo">A</div>
+  <div class="loader-bar"><div class="loader-fill"></div></div>
+</div>
+
+<div class="top-bar">
+  <div class="top-bar-left">
+    <a href="tel:+919783262999">📞 97832-62999</a>
+    <a href="/cdn-cgi/l/email-protection#7b4a4a4d494f3b1819081e0813121008131a551215"><img src="https://cdn.simpleicons.org/gmail/white" style="width:14px;height:14px;"> <span class="__cf_email__" data-cfemail="71404047434531121302140219181a0219105f181f">[email&#160;protected]</span></a>
+  </div>
+  <div class="top-bar-center">
+    🎓 Admission Open for 2026–27
+  </div>
+  <div class="top-bar-right">
+  <a href="#" target="_blank">
+    <img src="https://cdn.simpleicons.org/facebook/white" alt="Facebook">
+  </a>
+  <a href="#" target="_blank">
+    <img src="https://cdn.simpleicons.org/instagram/white" alt="Instagram">
+  </a>
+  <a href="#" target="_blank">
+    <img src="https://cdn.simpleicons.org/youtube/white" alt="YouTube">
+  </a>
+  <a href="#" target="_blank">
+    <img src="https://cdn.simpleicons.org/whatsapp/white" alt="WhatsApp">
+  </a>
+  <a href="#" target="_blank">
+    <img src="https://cdn.simpleicons.org/x/white" alt="X (Twitter)">
+  </a>
+  </div>
+</div>
+
+<nav>
+  <a href="index.html" class="nav-logo"><div class="logo-icon">A</div><span>Adarsh Vidyalaya</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="curriculum.html">Curriculum</a></li>
+    <li><a href="facilities.html" class="active">Campus</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="admissions.html">Admissions</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="admissions.html" class="nav-btn">Apply Now</a>
+
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<!-- MOBILE NAV OVERLAY -->
+<div class="nav-overlay" id="navOverlay" onclick="closeMenu()"></div>
+
+<!-- MOBILE NAV DRAWER -->
+<div class="mobile-nav" id="mobileNav">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="curriculum.html">Curriculum</a></li>
+    <li><a href="facilities.html" class="active">Campus</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="admissions.html">Admissions</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="admissions.html" class="mobile-apply-btn">Apply Now →</a>
+</div>
+
+<div class="page-hero">
+  <div class="badge">Campus & Facilities</div>
+  <h1>World-Class <span>Infrastructure</span></h1>
+  <p>Our 100-acre campus is designed to inspire learning, creativity, and growth at every step.</p>
+</div>
+
+<!-- FACILITIES -->
+<section class="fac-section">
+  <div class="container">
+    <div style="text-align:center">
+      <span class="section-tag">8 Major Facilities</span>
+      <h2>Everything Your Child <span>Needs</span></h2>
+    </div>
+    <div class="fac-grid">
+      <div class="fac-card">
+        <div class="fac-visual">📚</div>
+        <div class="fac-body">
+          <h3>Modern Library</h3>
+          <p>A sprawling library with 50,000+ books, digital resources, e-journals, and dedicated reading zones for every class.</p>
+          <span class="fac-tag">50,000+ Books</span>
+        </div>
+      </div>
+      <div class="fac-card">
+        <div class="fac-visual">🔬</div>
+        <div class="fac-body">
+          <h3>Science Laboratories</h3>
+          <p>State-of-the-art Physics, Chemistry, and Biology labs equipped with the latest instruments and safety gear.</p>
+          <span class="fac-tag">3 Labs</span>
+        </div>
+      </div>
+      <div class="fac-card">
+        <div class="fac-visual">💻</div>
+        <div class="fac-body">
+          <h3>Computer Center</h3>
+          <p>High-speed internet, 200+ computers, coding labs, and access to the latest software and learning platforms.</p>
+          <span class="fac-tag">200+ Computers</span>
+        </div>
+      </div>
+      <div class="fac-card">
+        <div class="fac-visual">⚽</div>
+        <div class="fac-body">
+          <h3>Sports Grounds</h3>
+          <p>Multiple grounds for cricket, football, basketball, volleyball, athletics, and an Olympic-size swimming pool.</p>
+          <span class="fac-tag">10+ Sports</span>
+        </div>
+      </div>
+      <div class="fac-card">
+        <div class="fac-visual">🎨</div>
+        <div class="fac-body">
+          <h3>Art & Music Studio</h3>
+          <p>Dedicated art rooms, music studio with professional instruments, dance hall, and drama rehearsal spaces.</p>
+          <span class="fac-tag">Creative Hub</span>
+        </div>
+      </div>
+      <div class="fac-card">
+        <div class="fac-visual">🍽️</div>
+        <div class="fac-body">
+          <h3>Dining Hall</h3>
+          <p>Nutritious, hygienic meals prepared by expert nutritionists. Serves 1500+ students three times daily.</p>
+          <span class="fac-tag">Nutritious Meals</span>
+        </div>
+      </div>
+      <div class="fac-card">
+        <div class="fac-visual">🏥</div>
+        <div class="fac-body">
+          <h3>Medical Center</h3>
+          <p>24/7 on-campus health care with qualified doctors, nurses, and fully equipped medical facilities.</p>
+          <span class="fac-tag">24/7 Care</span>
+        </div>
+      </div>
+      <div class="fac-card">
+        <div class="fac-visual">🌳</div>
+        <div class="fac-body">
+          <h3>Green Campus</h3>
+          <p>100-acre eco-friendly campus with nature trails, gardens, and environmental awareness programs.</p>
+          <span class="fac-tag">100 Acres</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPORTS -->
+<section class="sports">
+  <div class="container">
+    <span class="section-tag">🏆 Sports & Athletics</span>
+    <h2>Champion <span>Athletes</span> in the Making</h2>
+    <div class="sports-grid">
+      <div class="sport-item"><div class="s-icon">🏏</div><h5>Cricket</h5></div>
+      <div class="sport-item"><div class="s-icon">⚽</div><h5>Football</h5></div>
+      <div class="sport-item"><div class="s-icon">🏀</div><h5>Basketball</h5></div>
+      <div class="sport-item"><div class="s-icon">🏐</div><h5>Volleyball</h5></div>
+      <div class="sport-item"><div class="s-icon">🏸</div><h5>Badminton</h5></div>
+      <div class="sport-item"><div class="s-icon">🎾</div><h5>Table Tennis</h5></div>
+      <div class="sport-item"><div class="s-icon">🏊</div><h5>Swimming</h5></div>
+      <div class="sport-item"><div class="s-icon">🤸</div><h5>Gymnastics</h5></div>
+      <div class="sport-item"><div class="s-icon">🏹</div><h5>Archery</h5></div>
+      <div class="sport-item"><div class="s-icon">🧘</div><h5>Yoga</h5></div>
+      <div class="sport-item"><div class="s-icon">🥊</div><h5>Boxing</h5></div>
+      <div class="sport-item"><div class="s-icon">🏃</div><h5>Athletics</h5></div>
+    </div>
+  </div>
+</section>
+
+<!-- HOSTEL -->
+<section class="hostel">
+  <div class="container">
+    <div class="hostel-inner">
+      <div class="hostel-info">
+        <span class="section-tag">🏠 Boarding & Hostel</span>
+        <h2>A Home <span style="color:var(--gold)">Away From Home</span></h2>
+        <p>Our boarding facilities are designed to make every student feel safe, comfortable, and cared for. Separate hostels for boys and girls with 24/7 supervision and support.</p>
+        <p>प्रत्येक छात्रावास में आधुनिक सुविधाएं, सुरक्षित वातावरण और एक परिवार जैसा माहौल है जो बच्चों को घर जैसा एहसास दिलाता है।</p>
+        <div class="hostel-features">
+          <div class="hostel-feat">🛏️ Comfortable Rooms</div>
+          <div class="hostel-feat">🔒 24/7 Security</div>
+          <div class="hostel-feat">📶 Supervised Wi-Fi</div>
+          <div class="hostel-feat">🧺 Laundry Service</div>
+          <div class="hostel-feat">👩‍⚕️ House Parents</div>
+          <div class="hostel-feat">📞 Regular Parent Updates</div>
+        </div>
+      </div>
+      <div class="hostel-visual">
+        <div class="hostel-card">
+          <div class="big-icon">🏠</div>
+          <h3 style="color:white; font-family:'Playfair Display',serif">Hostel Facilities</h3>
+          <div class="hostel-stats">
+            <div class="h-stat"><strong>800+</strong><span>Boarding Students</span></div>
+            <div class="h-stat"><strong>2</strong><span>Separate Hostels</span></div>
+            <div class="h-stat"><strong>24/7</strong><span>Staff on Duty</span></div>
+            <div class="h-stat"><strong>100%</strong><span>Safety Record</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAMPUS MAP -->
+<section class="campus-map">
+  <div class="container">
+    <div style="text-align:center">
+      <span class="section-tag">🗺️ Campus Layout</span>
+      <h2>Our <span>100-Acre Campus</span></h2>
+    </div>
+    <div class="map-placeholder">
+      <div class="map-overlay">
+        <div>🗺️</div>
+        <p>Interactive Campus Map — Sardarshahr, Rajasthan</p>
+      </div>
+    </div>
+    <div class="campus-areas">
+      <div class="area-item"><div class="area-dot" style="background:#0a7c5c"></div>Academic Block</div>
+      <div class="area-item"><div class="area-dot" style="background:#1a8fe3"></div>Hostel (Boys)</div>
+      <div class="area-item"><div class="area-dot" style="background:#e8523a"></div>Hostel (Girls)</div>
+      <div class="area-item"><div class="area-dot" style="background:#f4a624"></div>Sports Ground</div>
+      <div class="area-item"><div class="area-dot" style="background:#9b59b6"></div>Auditorium</div>
+      <div class="area-item"><div class="area-dot" style="background:#16a085"></div>Gardens & Trails</div>
+      <div class="area-item"><div class="area-dot" style="background:#2c3e50"></div>Administration</div>
+      <div class="area-item"><div class="area-dot" style="background:#e74c3c"></div>Medical Center</div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- FLOATING WHATSAPP BUTTON -->
+<a href="https://wa.me/919783262999" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+  <span class="whatsapp-tooltip">Chat on WhatsApp</span>
+  <img src="https://cdn.simpleicons.org/whatsapp/white" alt="WhatsApp">
+</a>
+<footer>
+  <div class="footer-map">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28815.63!2d74.4418!3d28.4408!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3914a05a49bfffff%3A0x77e5ed0e0e0e0e0e!2sSardarshahr%2C%20Rajasthan%20331403!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin"
+        width="100%" height="280" style="border:0;" allowfullscreen="" loading="lazy">
+    </iframe>
+    <div class="footer-playlist">
+        <h4>📺 हमारा YouTube Channel</h4>
+        <iframe src="https://www.youtube.com/embed/videoseries?list=PLxxxxYOUR_PLAYLIST_ID" allowfullscreen></iframe>
+    </div>
+  </div>
+  <div class="footer-inner">
+    <div class="footer-col">
+      <h4>🏫 Adarsh Vidyalaya</h4>
+      <p>शिक्षा का उत्कृष्ट केंद्र<br>Sardarshahr, Rajasthan<br>A school that shapes futures.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <a href="about.html">About Us</a>
+      <a href="curriculum.html">Curriculum</a>
+      <a href="facilities.html">Campus</a>
+      <a href="gallery.html">Gallery</a>
+    </div>
+    <div class="footer-col">
+      <h4>Admissions</h4>
+      <a href="admissions.html">Apply Now</a>
+      <a href="admissions.html">Fee Structure</a>
+      <a href="testimonials.html">Testimonials</a>
+      <a href="contact.html">Contact Us</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p>📍 NH-11, Sardarshahr, Rajasthan</p>
+      <p>📞 97832-62999</p>
+      <p><img src="https://cdn.simpleicons.org/gmail/white" style="width:14px;height:14px;"> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="efdeded9dddbaf8c8d9c8a9c8786849c878ec18681">[email&#160;protected]</a></p>
+      <div class="social-icons">
+        <a href="#" target="_blank"><img src="https://cdn.simpleicons.org/facebook/white" alt="Facebook"></a>
+        <a href="#" target="_blank"><img src="https://cdn.simpleicons.org/instagram/white" alt="Instagram"></a>
+        <a href="#" target="_blank"><img src="https://cdn.simpleicons.org/youtube/white" alt="YouTube"></a>
+        <a href="#" target="_blank"><img src="https://cdn.simpleicons.org/whatsapp/white" alt="WhatsApp"></a>
+        <a href="#" target="_blank"><img src="https://cdn.simpleicons.org/x/white" alt="X (Twitter)"></a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2025 <span>Adarsh Vidyalaya</span> · Sardarshahr, Rajasthan · All Rights Reserved</div>
+</footer>
+
+<!-- BACK TO TOP -->
+<button id="backToTop" onclick="window.scrollTo({top:0, behavior:'smooth'})">↑</button>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

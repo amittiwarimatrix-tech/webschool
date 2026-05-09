@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admissions - Adarsh Vidyalaya</title>
+<link rel="stylesheet" href="style.css">
+<style>
+/* STEPS */
+.steps-section { background: white; }
+.steps-row { display: flex; gap: 0; position: relative; margin-top: 60px; }
+.steps-row::before {
+  content: ''; position: absolute; top: 40px; left: 8%; width: 84%; height: 3px;
+  background: linear-gradient(to right, var(--emerald), var(--sky), var(--coral), var(--gold));
+}
+.step { flex: 1; text-align: center; position: relative; z-index: 1; padding: 0 10px; }
+.step-circle {
+  width: 80px; height: 80px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px; margin: 0 auto 20px; border: 4px solid white;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+.step:nth-child(1) .step-circle { background: var(--emerald); }
+.step:nth-child(2) .step-circle { background: var(--sky); }
+.step:nth-child(3) .step-circle { background: var(--coral); }
+.step:nth-child(4) .step-circle { background: var(--gold); }
+.step h4 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+.step p { font-size: 13px; color: #888; line-height: 1.6; }
+
+/* FEE TABLE */
+.fees { background: var(--cream); }
+.fee-table { width: 100%; border-collapse: collapse; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); margin-top: 40px; }
+.fee-table th { background: var(--emerald); color: white; padding: 16px 20px; font-size: 14px; font-weight: 700; text-align: left; }
+.fee-table td { padding: 14px 20px; font-size: 15px; border-bottom: 1px solid #f0f0f0; }
+.fee-table tr:nth-child(even) td { background: #f9faf8; }
+.fee-table tr:hover td { background: var(--light-green); }
+.fee-note { display: flex; gap: 12px; align-items: flex-start; background: #fff8e1; border: 1px solid #ffe082; border-radius: 12px; padding: 16px 20px; margin-top: 20px; }
+.fee-note span { font-size: 20px; }
+.fee-note p { font-size: 14px; color: #7c5700; line-height: 1.6; }
+
+/* ELIGIBILITY */
+.eligibility { background: white; }
+.elig-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; margin-top: 40px; }
+.elig-card {
+  background: var(--cream); border-radius: 18px; padding: 28px;
+  border-left: 5px solid var(--emerald);
+}
+.elig-card:nth-child(2) { border-left-color: var(--sky); }
+.elig-card:nth-child(3) { border-left-color: var(--coral); }
+.elig-card:nth-child(4) { border-left-color: var(--gold); }
+.elig-card h4 { font-size: 18px; font-weight: 700; margin-bottom: 14px; font-family: 'Playfair Display', serif; }
+.elig-list { list-style: none; }
+.elig-list li { font-size: 14px; color: #555; padding: 6px 0; display: flex; gap: 10px; border-bottom: 1px solid #eee; }
+.elig-list li::before { content: '→'; color: var(--emerald); font-weight: 700; }
+
+/* CTA */
+.adm-cta { background: linear-gradient(135deg, #0a7c5c, #1a3a6e); color: white; text-align: center; }
+.adm-cta h2 { color: white; margin-bottom: 12px; }
+.adm-cta p { color: rgba(255,255,255,0.8); font-size: 18px; margin-bottom: 36px; }
+.cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+.btn-gold { background: var(--gold); color: var(--dark); padding: 16px 40px; border-radius: 30px; font-weight: 700; font-size: 16px; text-decoration: none; box-shadow: 0 6px 24px rgba(244,166,36,0.4); transition: all 0.3s; display: inline-block; }
+.btn-gold:hover { transform: translateY(-3px); }
+.btn-light { border: 2px solid rgba(255,255,255,0.5); color: white; padding: 16px 40px; border-radius: 30px; font-weight: 600; font-size: 16px; text-decoration: none; transition: all 0.3s; display: inline-block; }
+.btn-light:hover { background: rgba(255,255,255,0.1); }
+
+@media (max-width: 768px) {
+  .steps-row { flex-direction: column; gap: 30px; }
+  .steps-row::before { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- PAGE LOADER -->
+<div id="pageLoader">
+  <div class="loader-logo">A</div>
+  <div class="loader-bar"><div class="loader-fill"></div></div>
+</div>
+
+<div class="top-bar">
+  <div class="top-bar-left">
+    <a href="tel:+919783262999">📞 97832-62999</a>
+    <a href="/cdn-cgi/l/email-protection#85b4b4b3b7b1c5e6e7f6e0f6edeceef6ede4abeceb"><img src="https://cdn.simpleicons.org/gmail/white" style="width:14px;height:14px;"> <span class="__cf_email__" data-cfemail="2617171014126645445543554e4f4d554e47084f48">[email&#160;protected]</span></a>
+  </div>
+  <div class="top-bar-center">
+    🎓 Admission Open for 2026–27
+  </div>
+  <div class="top-bar-right">
+  <a href="#" target="_blank">
+    <img src="https://cdn.simpleicons.org/facebook/white" alt="Facebook">
+  </a>
+  <a href="#" target="_blank">
+    <img src="https://cdn.simpleicons.org/instagram/white" alt="Instagram">
+  </a>
+  <a href="#" target="_blank">
+    <img src="https://cdn.simpleicons.org/youtube/white" alt="YouTube">
+  </a>
+  <a href="#" target="_blank">
+    <img src="https://cdn.simpleicons.org/whatsapp/white" alt="WhatsApp">
+  </a>
+  <a href="#" target="_blank">
+    <img src="https://cdn.simpleicons.org/x/white" alt="X (Twitter)">
+  </a>
+  </div>
+</div>
+
+<nav>
+  <a href="index.html" class="nav-logo"><div class="logo-icon">A</div><span>Adarsh Vidyalaya</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="curriculum.html">Curriculum</a></li>
+    <li><a href="facilities.html">Campus</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="admissions.html" class="active">Admissions</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="contact.html" class="nav-btn">Enquire Now</a>
+
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<!-- MOBILE NAV OVERLAY -->
+<div class="nav-overlay" id="navOverlay" onclick="closeMenu()"></div>
+
+<!-- MOBILE NAV DRAWER -->
+<div class="mobile-nav" id="mobileNav">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="curriculum.html">Curriculum</a></li>
+    <li><a href="facilities.html">Campus</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="admissions.html" class="active">Admissions</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="admissions.html" class="mobile-apply-btn">Apply Now →</a>
+</div>
+
+<div class="page-hero">
+  <div class="badge">Admissions 2025–26 Open</div>
+  <h1>Join the <span>Adarsh Family</span></h1>
+  <p>Begin your child's journey towards excellence. Limited seats available.</p>
+</div>
+
+<!-- STEPS -->
+<section class="steps-section">
+  <div class="container">
+    <div style="text-align:center">
+      <span class="section-tag">Simple 4-Step Process</span>
+      <h2>How to <span>Apply</span></h2>
+    </div>
+    <div class="steps-row">
+      <div class="step">
+        <div class="step-circle" style="color:white">📋</div>
+        <h4>Step 1: Enquiry</h4>
+        <p>Fill the online form or call us to express interest and get a prospectus.</p>
+      </div>
+      <div class="step">
+        <div class="step-circle" style="color:white">🏫</div>
+        <h4>Step 2: Campus Visit</h4>
+        <p>Visit our campus, meet the principal and explore facilities at your convenience.</p>
+      </div>
+      <div class="step">
+        <div class="step-circle" style="color:white">✏️</div>
+        <h4>Step 3: Entrance Test</h4>
+        <p>Student appears for a friendly written assessment and personal interview.</p>
+      </div>
+      <div class="step">
+        <div class="step-circle" style="color:var(--dark)">🎉</div>
+        <h4>Step 4: Admission Confirmed</h4>
+        <p>Receive offer letter, submit documents, and pay the admission fee.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ELIGIBILITY -->
+<section class="eligibility">
+  <div class="container">
+    <span class="section-tag">Eligibility Criteria</span>
+    <h2>Who Can <span>Apply</span></h2>
+    <div class="elig-grid">
+      <div class="elig-card">
+        <h4>Class 6 Admission</h4>
+        <ul class="elig-list">
+          <li>Completed Class 5 from recognized school</li>
+          <li>Age: 10–12 years as of April 1, 2025</li>
+          <li>Minimum 60% in Class 5</li>
+          <li>Entrance test: Hindi, English, Maths</li>
+        </ul>
+      </div>
+      <div class="elig-card">
+        <h4>Class 9 Admission</h4>
+        <ul class="elig-list">
+          <li>Completed Class 8 from recognized school</li>
+          <li>Age: 13–15 years as of April 1, 2025</li>
+          <li>Minimum 65% in Class 8</li>
+          <li>Entrance test: Science, Maths, English</li>
+        </ul>
+      </div>
+      <div class="elig-card">
+        <h4>Class 11 Admission</h4>
+        <ul class="elig-list">
+          <li>Passed Class 10 CBSE/State Board</li>
+          <li>Science stream: Min 75% in Science & Maths</li>
+          <li>Commerce stream: Min 65% overall</li>
+          <li>Interview + document verification</li>
+        </ul>
+      </div>
+      <div class="elig-card">
+        <h4>Documents Required</h4>
+        <ul class="elig-list">
+          <li>Previous school marksheets (last 2 years)</li>
+          <li>Transfer certificate from last school</li>
+          <li>Birth certificate</li>
+          <li>4 passport-size photographs</li>
+          <li>Aadhar card (student + parents)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEES -->
+<section class="fees">
+  <div class="container">
+    <span class="section-tag">Fee Structure 2025–26</span>
+    <h2>Transparent <span>Fee Structure</span></h2>
+    <table class="fee-table">
+      <thead>
+        <tr><th>Class</th><th>Tuition Fee (Annual)</th><th>Hostel Fee (Annual)</th><th>Total (Day Scholar)</th><th>Total (Boarder)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Class 6–8</td><td>₹85,000</td><td>₹1,20,000</td><td>₹85,000</td><td>₹2,05,000</td></tr>
+        <tr><td>Class 9–10</td><td>₹95,000</td><td>₹1,20,000</td><td>₹95,000</td><td>₹2,15,000</td></tr>
+        <tr><td>Class 11–12 (Science)</td><td>₹1,10,000</td><td>₹1,30,000</td><td>₹1,10,000</td><td>₹2,40,000</td></tr>
+        <tr><td>Class 11–12 (Commerce)</td><td>₹1,00,000</td><td>₹1,30,000</td><td>₹1,00,000</td><td>₹2,30,000</td></tr>
+      </tbody>
+    </table>
+    <div class="fee-note">
+      <span>ℹ️</span>
+      <p><strong>Note:</strong> Fees include tuition, books, uniform, sports, labs, and all school activities. Hostel fee includes boarding, meals, laundry, and medical. Scholarships available for meritorious and economically weaker students. Contact admissions office for details.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="adm-cta">
+  <div class="container">
+    <span class="section-tag" style="background:rgba(255,255,255,0.15);color:white">🎯 Limited Seats</span>
+    <h2>Don't Miss the <span style="color:var(--gold)">2025–26 Admission</span></h2>
+    <p>Applications close on March 31, 2025. Apply now to secure your child's future.</p>
+    <div class="cta-btns">
+      <a href="contact.html" class="btn-gold">Apply Online Now →</a>
+      <a href="tel:+919876543210" class="btn-light">📞 Call for Enquiry</a>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- FLOATING WHATSAPP BUTTON -->
+<a href="https://wa.me/919783262999" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+  <span class="whatsapp-tooltip">Chat on WhatsApp</span>
+  <img src="https://cdn.simpleicons.org/whatsapp/white" alt="WhatsApp">
+</a>
+<footer>
+  <div class="footer-map">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28815.63!2d74.4418!3d28.4408!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3914a05a49bfffff%3A0x77e5ed0e0e0e0e0e!2sSardarshahr%2C%20Rajasthan%20331403!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin"
+        width="100%" height="280" style="border:0;" allowfullscreen="" loading="lazy">
+    </iframe>
+    <div class="footer-playlist">
+        <h4>📺 हमारा YouTube Channel</h4>
+        <iframe src="https://www.youtube.com/embed/videoseries?list=PLxxxxYOUR_PLAYLIST_ID" allowfullscreen></iframe>
+    </div>
+  </div>
+  <div class="footer-inner">
+    <div class="footer-col">
+      <h4>🏫 Adarsh Vidyalaya</h4>
+      <p>शिक्षा का उत्कृष्ट केंद्र<br>Sardarshahr, Rajasthan<br>A school that shapes futures.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <a href="about.html">About Us</a>
+      <a href="curriculum.html">Curriculum</a>
+      <a href="facilities.html">Campus</a>
+      <a href="gallery.html">Gallery</a>
+    </div>
+    <div class="footer-col">
+      <h4>Admissions</h4>
+      <a href="admissions.html">Apply Now</a>
+      <a href="admissions.html">Fee Structure</a>
+      <a href="testimonials.html">Testimonials</a>
+      <a href="contact.html">Contact Us</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p>📍 NH-11, Sardarshahr, Rajasthan</p>
+      <p>📞 97832-62999</p>
+      <p><img src="https://cdn.simpleicons.org/gmail/white" style="width:14px;height:14px;"> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2f1e1e191d1b6f4c4d5c4a5c4746445c474e014641">[email&#160;protected]</a></p>
+      <div class="social-icons">
+        <a href="#" target="_blank"><img src="https://cdn.simpleicons.org/facebook/white" alt="Facebook"></a>
+        <a href="#" target="_blank"><img src="https://cdn.simpleicons.org/instagram/white" alt="Instagram"></a>
+        <a href="#" target="_blank"><img src="https://cdn.simpleicons.org/youtube/white" alt="YouTube"></a>
+        <a href="#" target="_blank"><img src="https://cdn.simpleicons.org/whatsapp/white" alt="WhatsApp"></a>
+        <a href="#" target="_blank"><img src="https://cdn.simpleicons.org/x/white" alt="X (Twitter)"></a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2025 <span>Adarsh Vidyalaya</span> · Sardarshahr, Rajasthan · All Rights Reserved</div>
+</footer>
+
+<!-- BACK TO TOP -->
+<button id="backToTop" onclick="window.scrollTo({top:0, behavior:'smooth'})">↑</button>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

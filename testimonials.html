@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Testimonials - Adarsh Vidyalaya</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.test-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 28px; margin-top: 50px; }
+.test-card {
+  background: white; border-radius: 20px; padding: 36px 30px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+  transition: transform 0.3s; position: relative;
+}
+.test-card:hover { transform: translateY(-6px); }
+.stars { color: var(--gold); font-size: 18px; margin-bottom: 14px; letter-spacing: 2px; }
+.quote-mark { font-size: 70px; color: var(--emerald); line-height: 0.4; font-family: 'Playfair Display', serif; margin-bottom: 18px; display: block; opacity: 0.3; }
+.test-card p { font-size: 15px; color: #555; line-height: 1.85; margin-bottom: 26px; font-style: italic; }
+.test-author { display: flex; align-items: center; gap: 14px; padding-top: 20px; border-top: 1px solid #f0f0f0; }
+.author-avatar {
+  width: 54px; height: 54px; border-radius: 50%; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px; font-weight: 900; font-family: 'Playfair Display', serif; color: white;
+}
+.av1 { background: linear-gradient(135deg, var(--emerald), var(--sky)); }
+.av2 { background: linear-gradient(135deg, var(--coral), var(--gold)); }
+.av3 { background: linear-gradient(135deg, #9b59b6, #1a8fe3); }
+.av4 { background: linear-gradient(135deg, var(--emerald), #16a085); }
+.av5 { background: linear-gradient(135deg, var(--gold), var(--coral)); }
+.av6 { background: linear-gradient(135deg, var(--sky), var(--emerald)); }
+.author-info strong { font-size: 16px; color: var(--dark); display: block; font-weight: 700; }
+.author-info span { font-size: 13px; color: #999; }
+.author-tag { margin-left: auto; background: var(--light-green); color: var(--emerald); padding: 4px 12px; border-radius: 12px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; }
+
+/* ALUMNI SPOTLIGHT -->*/
+.spotlight { background: var(--cream); }
+.spotlight-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; margin-top: 40px; }
+.spotlight-card {
+  background: white; border-radius: 20px; padding: 32px 24px; text-align: center;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06); transition: transform 0.3s;
+}
+.spotlight-card:hover { transform: translateY(-4px); }
+.sp-avatar {
+  width: 80px; height: 80px; border-radius: 50%; margin: 0 auto 16px;
+  display: flex; align-items: center; justify-content: center; font-size: 36px;
+  background: linear-gradient(135deg, var(--emerald), var(--sky));
+}
+.sp-name { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+.sp-batch { color: var(--emerald); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+.sp-current { font-size: 14px; color: #555; margin-bottom: 6px; font-weight: 600; }
+.sp-college { font-size: 13px; color: #999; }
+
+/* STATS BANNER -->*/
+.stats-banner { background: linear-gradient(135deg, #0a7c5c, #1a3a6e); color: white; padding: 60px 40px; }
+.stats-inner { max-width: 900px; margin: 0 auto; display: flex; gap: 0; justify-content: center; flex-wrap: wrap; }
+.sb-stat { text-align: center; padding: 20px 50px; border-right: 1px solid rgba(255,255,255,0.2); }
+.sb-stat:last-child { border-right: none; }
+.sb-num { font-family: 'Playfair Display', serif; font-size: 50px; font-weight: 900; color: var(--gold); line-height: 1; }
+.sb-label { font-size: 13px; color: rgba(255,255,255,0.7); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-top: 6px; }
+</style>
+</head>
+<body>
+
+<!-- PAGE LOADER -->
+<div id="pageLoader">
+  <div class="loader-logo">A</div>
+  <div class="loader-bar"><div class="loader-fill"></div></div>
+</div>
+
+<div class="top-bar">
+  <div class="top-bar-left">
+    <a href="tel:+919783262999">📞 97832-62999</a>
+    <a href="/cdn-cgi/l/email-protection#6f5e5e595d5b2f0c0d1c0a1c0706041c070e410601"><img src="https://cdn.simpleicons.org/gmail/white" style="width:14px;height:14px;"> <span class="__cf_email__" data-cfemail="1c2d2d2a2e285c7f7e6f796f7475776f747d327572">[email&#160;protected]</span></a>
+  </div>
+  <div class="top-bar-center">
+    🎓 Admission Open for 2026–27
+  </div>
+  <div class="top-bar-right">
+  <a href="#" target="_blank">
+    <img src="https://cdn.simpleicons.org/facebook/white" alt="Facebook">
+  </a>
+  <a href="#" target="_blank">
+    <img src="https://cdn.simpleicons.org/instagram/white" alt="Instagram">
+  </a>
+  <a href="#" target="_blank">
+    <img src="https://cdn.simpleicons.org/youtube/white" alt="YouTube">
+  </a>
+  <a href="#" target="_blank">
+    <img src="https://cdn.simpleicons.org/whatsapp/white" alt="WhatsApp">
+  </a>
+  <a href="#" target="_blank">
+    <img src="https://cdn.simpleicons.org/x/white" alt="X (Twitter)">
+  </a>
+  </div>
+</div>
+
+<nav>
+  <a href="index.html" class="nav-logo"><div class="logo-icon">A</div><span>Adarsh Vidyalaya</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="curriculum.html">Curriculum</a></li>
+    <li><a href="facilities.html">Campus</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="admissions.html">Admissions</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="admissions.html" class="nav-btn">Apply Now</a>
+
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<!-- MOBILE NAV OVERLAY -->
+<div class="nav-overlay" id="navOverlay" onclick="closeMenu()"></div>
+
+<!-- MOBILE NAV DRAWER -->
+<div class="mobile-nav" id="mobileNav">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="curriculum.html">Curriculum</a></li>
+    <li><a href="facilities.html">Campus</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="admissions.html">Admissions</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="admissions.html" class="mobile-apply-btn">Apply Now →</a>
+</div>
+
+<div class="page-hero">
+  <div class="badge">💬 Voices of Adarsh</div>
+  <h1>What Our <span>Community Says</span></h1>
+  <p>Real stories from parents, students, and alumni who've experienced the Adarsh difference.</p>
+</div>
+
+<!-- STATS BANNER -->
+<div class="stats-banner">
+  <div class="stats-inner">
+    <div class="sb-stat"><div class="sb-num">2000+</div><div class="sb-label">Alumni Worldwide</div></div>
+    <div class="sb-stat"><div class="sb-num">98%</div><div class="sb-label">Parent Satisfaction</div></div>
+    <div class="sb-stat"><div class="sb-num">95%</div><div class="sb-label">University Placement</div></div>
+    <div class="sb-stat"><div class="sb-num">4.9★</div><div class="sb-label">Average Rating</div></div>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<section style="background: var(--cream);">
+  <div class="container">
+    <div style="text-align:center">
+      <span class="section-tag">Parent Reviews</span>
+      <h2>Trusted by <span>Thousands of Families</span></h2>
+    </div>
+    <div class="test-grid">
+      <div class="test-card">
+        <div class="stars">★★★★★</div>
+        <span class="quote-mark">"</span>
+        <p>Adarsh Vidyalaya transformed my son completely. The teachers here don't just teach — they inspire and guide. He is now at IIT Delhi, and we owe it all to this wonderful institution.</p>
+        <div class="test-author">
+          <div class="author-avatar av1">R</div>
+          <div class="author-info"><strong>Rajesh Sharma</strong><span>Parent of Aryan Sharma, Class of 2022</span></div>
+          <div class="author-tag">Parent</div>
+        </div>
+      </div>
+      <div class="test-card">
+        <div class="stars">★★★★★</div>
+        <span class="quote-mark">"</span>
+        <p>इस विद्यालय ने मुझे न केवल पढ़ाई में बल्कि जीवन में भी आगे बढ़ने की प्रेरणा दी। यहाँ का अनुशासन, प्रेम और शिक्षकों का समर्पण अद्वितीय है।</p>
+        <div class="test-author">
+          <div class="author-avatar av2">P</div>
+          <div class="author-info"><strong>Priya Verma</strong><span>Alumni, Class of 2019 · Currently at NIT Jaipur</span></div>
+          <div class="author-tag">Alumni</div>
+        </div>
+      </div>
+      <div class="test-card">
+        <div class="stars">★★★★★</div>
+        <span class="quote-mark">"</span>
+        <p>The holistic approach is unmatched. My daughter excels in academics AND sports. She represented Rajasthan in the state swimming championship after training here!</p>
+        <div class="test-author">
+          <div class="author-avatar av3">S</div>
+          <div class="author-info"><strong>Sunita Agarwal</strong><span>Parent of Kavya Agarwal, Class of 2024</span></div>
+          <div class="author-tag">Parent</div>
+        </div>
+      </div>
+      <div class="test-card">
+        <div class="stars">★★★★★</div>
+        <span class="quote-mark">"</span>
+        <p>Five years at Adarsh taught me discipline, teamwork, and how to think. I credit my success at AIIMS to the strong science foundation and mentorship I received here.</p>
+        <div class="test-author">
+          <div class="author-avatar av4">A</div>
+          <div class="author-info"><strong>Dr. Amit Choudhary</strong><span>Alumni, Class of 2016 · AIIMS Doctor</span></div>
+          <div class="author-tag">Alumni</div>
+        </div>
+      </div>
+      <div class="test-card">
+        <div class="stars">★★★★★</div>
+        <span class="quote-mark">"</span>
+        <p>हमारे दोनों बच्चे यहाँ पढ़े हैं। विद्यालय का माहौल, शिक्षकों की लगन और सुविधाएं देखकर हमने कभी कोई चिंता नहीं की। यह सच में एक सुरक्षित और श्रेष्ठ विद्यालय है।</p>
+        <div class="test-author">
+          <div class="author-avatar av5">M</div>
+          <div class="author-info"><strong>Monika & Vinod Joshi</strong><span>Parents of two Adarsh students</span></div>
+          <div class="author-tag">Parent</div>
+        </div>
+      </div>
+      <div class="test-card">
+        <div class="stars">★★★★★</div>
+        <span class="quote-mark">"</span>
+        <p>I joined as a shy, introverted student and left as the School Captain. Adarsh gave me my confidence, my voice, and my values. It's not just a school — it's a second home.</p>
+        <div class="test-author">
+          <div class="author-avatar av6">N</div>
+          <div class="author-info"><strong>Neha Rathore</strong><span>Alumni, Class of 2021 · School Captain</span></div>
+          <div class="author-tag">Alumni</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ALUMNI SPOTLIGHT -->
+<section class="spotlight">
+  <div class="container">
+    <div style="text-align:center">
+      <span class="section-tag">🌟 Alumni Spotlight</span>
+      <h2>Our Alumni — <span>Making Us Proud</span></h2>
+    </div>
+    <div class="spotlight-grid">
+      <div class="spotlight-card">
+        <div class="sp-avatar">👨‍💻</div>
+        <div class="sp-name">Rohit Gupta</div>
+        <div class="sp-batch">Batch of 2015</div>
+        <div class="sp-current">Software Engineer</div>
+        <div class="sp-college">Google, Bangalore</div>
+      </div>
+      <div class="spotlight-card">
+        <div class="sp-avatar">👩‍⚕️</div>
+        <div class="sp-name">Dr. Kavita Sharma</div>
+        <div class="sp-batch">Batch of 2014</div>
+        <div class="sp-current">Medical Doctor</div>
+        <div class="sp-college">AIIMS, New Delhi</div>
+      </div>
+      <div class="spotlight-card">
+        <div class="sp-avatar">👨‍🎓</div>
+        <div class="sp-name">Vishal Meena</div>
+        <div class="sp-batch">Batch of 2018</div>
+        <div class="sp-current">IIT Graduate</div>
+        <div class="sp-college">IIT Bombay, CSE</div>
+      </div>
+      <div class="spotlight-card">
+        <div class="sp-avatar">👩‍💼</div>
+        <div class="sp-name">Anjali Bishnoi</div>
+        <div class="sp-batch">Batch of 2017</div>
+        <div class="sp-current">IAS Officer</div>
+        <div class="sp-college">UPSC Rank 42</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- FLOATING WHATSAPP BUTTON -->
+<a href="https://wa.me/919783262999" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+  <span class="whatsapp-tooltip">Chat on WhatsApp</span>
+  <img src="https://cdn.simpleicons.org/whatsapp/white" alt="WhatsApp">
+</a>
+<footer>
+  <div class="footer-map">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28815.63!2d74.4418!3d28.4408!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3914a05a49bfffff%3A0x77e5ed0e0e0e0e0e!2sSardarshahr%2C%20Rajasthan%20331403!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin"
+        width="100%" height="280" style="border:0;" allowfullscreen="" loading="lazy">
+    </iframe>
+    <div class="footer-playlist">
+        <h4>📺 हमारा YouTube Channel</h4>
+        <iframe src="https://www.youtube.com/embed/videoseries?list=PLxxxxYOUR_PLAYLIST_ID" allowfullscreen></iframe>
+    </div>
+  </div>
+  <div class="footer-inner">
+    <div class="footer-col">
+      <h4>🏫 Adarsh Vidyalaya</h4>
+      <p>शिक्षा का उत्कृष्ट केंद्र<br>Sardarshahr, Rajasthan<br>A school that shapes futures.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <a href="about.html">About Us</a>
+      <a href="curriculum.html">Curriculum</a>
+      <a href="facilities.html">Campus</a>
+      <a href="gallery.html">Gallery</a>
+    </div>
+    <div class="footer-col">
+      <h4>Admissions</h4>
+      <a href="admissions.html">Apply Now</a>
+      <a href="admissions.html">Fee Structure</a>
+      <a href="testimonials.html">Testimonials</a>
+      <a href="contact.html">Contact Us</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p>📍 NH-11, Sardarshahr, Rajasthan</p>
+      <p>📞 97832-62999</p>
+      <p><img src="https://cdn.simpleicons.org/gmail/white" style="width:14px;height:14px;"> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="5d6c6c6b6f691d3e3f2e382e3534362e353c733433">[email&#160;protected]</a></p>
+      <div class="social-icons">
+        <a href="#" target="_blank"><img src="https://cdn.simpleicons.org/facebook/white" alt="Facebook"></a>
+        <a href="#" target="_blank"><img src="https://cdn.simpleicons.org/instagram/white" alt="Instagram"></a>
+        <a href="#" target="_blank"><img src="https://cdn.simpleicons.org/youtube/white" alt="YouTube"></a>
+        <a href="#" target="_blank"><img src="https://cdn.simpleicons.org/whatsapp/white" alt="WhatsApp"></a>
+        <a href="#" target="_blank"><img src="https://cdn.simpleicons.org/x/white" alt="X (Twitter)"></a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2025 <span>Adarsh Vidyalaya</span> · Sardarshahr, Rajasthan · All Rights Reserved</div>
+</footer>
+
+<!-- BACK TO TOP -->
+<button id="backToTop" onclick="window.scrollTo({top:0, behavior:'smooth'})">↑</button>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

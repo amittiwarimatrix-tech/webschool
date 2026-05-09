@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Curriculum - Adarsh Vidyalaya</title>
+<link rel="stylesheet" href="style.css">
+<style>
+
+/* ===== CLASS TABS ===== */
+.class-tabs {
+  display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-bottom: 40px;
+}
+.class-tab {
+  padding: 10px 22px; border-radius: 25px; cursor: pointer;
+  font-weight: 700; font-size: 14px; transition: all 0.2s;
+  border: 2px solid #ddd; background: white; color: #666;
+  font-family: 'Nunito', sans-serif;
+}
+.class-tab.active, .class-tab:hover {
+  background: var(--emerald); color: white; border-color: var(--emerald);
+}
+
+.class-panel { display: none; }
+.class-panel.active { display: block; }
+
+.class-header {
+  background: linear-gradient(135deg, var(--navy), var(--emerald));
+  border-radius: 20px; padding: 36px 40px; margin-bottom: 32px;
+  display: flex; align-items: center; gap: 28px; color: white;
+}
+.class-header-icon { font-size: 64px; line-height: 1; }
+.class-header h2 { font-size: 28px; margin-bottom: 6px; font-family: 'Playfair Display', serif; }
+.class-header p { opacity: 0.85; font-size: 15px; }
+.class-badge {
+  margin-left: auto; background: rgba(255,255,255,0.2);
+  border: 1px solid rgba(255,255,255,0.3);
+  padding: 8px 20px; border-radius: 20px;
+  font-size: 13px; font-weight: 700; white-space: nowrap;
+}
+
+.subjects-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px; margin-bottom: 32px;
+}
+.subject-card {
+  background: white; border-radius: 14px; padding: 20px 18px;
+  box-shadow: 0 3px 14px rgba(0,0,0,0.07);
+  display: flex; align-items: center; gap: 14px;
+  border-left: 4px solid var(--emerald);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.subject-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
+.subject-card .sub-icon { font-size: 28px; }
+.subject-card .sub-name { font-weight: 700; font-size: 14px; color: #1a1a2e; }
+.subject-card .sub-type { font-size: 12px; color: #999; margin-top: 2px; }
+
+.streams-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px; margin-bottom: 32px;
+}
+.stream-card { border-radius: 18px; overflow: hidden; box-shadow: 0 4px 18px rgba(0,0,0,0.1); }
+.stream-head { padding: 24px 28px; color: white; display: flex; align-items: center; gap: 16px; }
+.stream-head .s-icon { font-size: 40px; }
+.stream-head h3 { font-size: 20px; font-weight: 800; }
+.stream-head p { font-size: 13px; opacity: 0.85; margin-top: 4px; }
+.stream-science .stream-head { background: linear-gradient(135deg, #1a3a6e, #0a7c5c); }
+.stream-commerce .stream-head { background: linear-gradient(135deg, #7b341e, #c05621); }
+.stream-arts .stream-head { background: linear-gradient(135deg, #553c9a, #b794f4); }
+.stream-body { background: white; padding: 20px 28px; }
+.stream-body ul { list-style: none; padding: 0; }
+.stream-body ul li {
+  padding: 8px 0; border-bottom: 1px solid #f0f0f0;
+  font-size: 14px; color: #444; font-weight: 600;
+  display: flex; align-items: center; gap: 10px;
+}
+.stream-body ul li:last-child { border-bottom: none; }
+.stream-body ul li::before { content: '✓'; color: var(--emerald); font-weight: 900; }
+
+.info-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px; margin-bottom: 32px;
+}
+.info-card { background: white; border-radius: 16px; padding: 28px 24px; box-shadow: 0 4px 16px rgba(0,0,0,0.07); }
+.info-card h4 { font-size: 17px; font-weight: 800; color: #1a1a2e; margin-bottom: 14px; }
+.info-card ul { list-style: none; padding: 0; }
+.info-card ul li { font-size: 14px; color: #555; padding: 6px 0; border-bottom: 1px dashed #eee; display: flex; gap: 10px; }
+.info-card ul li:last-child { border-bottom: none; }
+
+.method-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px;
+}
+.method-card {
+  background: white; border-radius: 16px; padding: 28px 22px; text-align: center;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.07); transition: transform 0.2s;
+}
+.method-card:hover { transform: translateY(-4px); }
+.method-card .m-icon { font-size: 44px; margin-bottom: 14px; }
+.method-card h4 { font-size: 15px; font-weight: 800; color: #1a1a2e; margin-bottom: 8px; }
+.method-card p { font-size: 13px; color: #777; line-height: 1.6; }
+
+.achieve-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px;
+}
+.achieve-card {
+  background: linear-gradient(135deg, var(--navy), #0a7c5c);
+  border-radius: 16px; padding: 28px 24px; color: white; text-align: center;
+}
+.achieve-card .a-num { font-size: 42px; font-weight: 900; color: var(--gold); font-family: 'Playfair Display', serif; }
+.achieve-card p { font-size: 14px; opacity: 0.85; margin-top: 6px; }
+
+.cocurr-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px;
+}
+.cocurr-card {
+  background: white; border-radius: 14px; padding: 22px 16px; text-align: center;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.07); transition: transform 0.2s;
+}
+.cocurr-card:hover { transform: translateY(-3px); }
+.cocurr-card .cc-icon { font-size: 36px; margin-bottom: 10px; }
+.cocurr-card h5 { font-size: 14px; font-weight: 800; color: #1a1a2e; }
+.cocurr-card p { font-size: 12px; color: #888; margin-top: 4px; }
+
+@media(max-width: 768px) {
+  .class-header { flex-direction: column; text-align: center; }
+  .class-badge { margin-left: 0; }
+}
+</style>
+</head>
+<body>
+
+<!-- PAGE LOADER -->
+<div id="pageLoader">
+  <div class="loader-logo">A</div>
+  <div class="loader-bar"><div class="loader-fill"></div></div>
+</div>
+
+  <div class="top-bar">
+  <div class="top-bar-left">
+    <a href="tel:+919783262999">📞 97832-62999</a>
+    <a href="/cdn-cgi/l/email-protection#3405050206007457564751475c5d5f475c551a5d5a"><img src="https://cdn.simpleicons.org/gmail/white" style="width:14px;height:14px;"> <span class="__cf_email__" data-cfemail="4a7b7b7c787e0a2928392f3922232139222b642324">[email&#160;protected]</span></a>
+  </div>
+  <div class="top-bar-center">🎓 Admission Open for 2026–27</div>
+  <div class="top-bar-right">
+    <a href="#" target="_blank"><img src="https://cdn.simpleicons.org/facebook/white" alt="Facebook"></a>
+    <a href="#" target="_blank"><img src="https://cdn.simpleicons.org/instagram/white" alt="Instagram"></a>
+    <a href="#" target="_blank"><img src="https://cdn.simpleicons.org/youtube/white" alt="YouTube"></a>
+    <a href="#" target="_blank"><img src="https://cdn.simpleicons.org/whatsapp/white" alt="WhatsApp"></a>
+    <a href="#" target="_blank"><img src="https://cdn.simpleicons.org/x/white" alt="X"></a>
+  </div>
+</div>
+
+<nav>
+  <a href="index.html" class="nav-logo"><div class="logo-icon">A</div><span>Adarsh Vidyalaya</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="curriculum.html" class="active">Curriculum</a></li>
+    <li><a href="facilities.html">Campus</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="admissions.html">Admissions</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="admissions.html" class="nav-btn">Apply Now</a>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="nav-overlay" id="navOverlay" onclick="closeMenu()"></div>
+<div class="mobile-nav" id="mobileNav">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="curriculum.html" class="active">Curriculum</a></li>
+    <li><a href="facilities.html">Campus</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="admissions.html">Admissions</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="admissions.html" class="mobile-apply-btn">Apply Now →</a>
+</div>
+
+<div class="page-hero">
+  <div class="badge">📚 Curriculum</div>
+  <h1>Our <span>Academic Program</span></h1>
+  <p>A holistic curriculum from Nursery to Class 12th — RBSE & CBSE Board.</p>
+</div>
+
+<!-- CLASS TABS -->
+<section style="background:#f5f5f5; padding: 60px 40px;">
+  <div class="container">
+    <div style="text-align:center; margin-bottom:16px;">
+      <span class="section-tag">Classes & Subjects</span>
+      <h2>Explore <span>Every Grade</span></h2>
+    </div>
+    <div class="class-tabs">
+      <button class="class-tab active" onclick="showClass('nursery', this)">Nursery–KG</button>
+      <button class="class-tab" onclick="showClass('primary', this)">Class 1–5</button>
+      <button class="class-tab" onclick="showClass('middle', this)">Class 6–8</button>
+      <button class="class-tab" onclick="showClass('secondary', this)">Class 9–10</button>
+      <button class="class-tab" onclick="showClass('senior', this)">Class 11–12</button>
+    </div>
+
+    <!-- NURSERY -->
+    <div class="class-panel active" id="panel-nursery">
+      <div class="class-header">
+        <div class="class-header-icon">🌱</div>
+        <div><h2>Nursery – KG</h2><p>Play-based learning, creativity, and early childhood development</p></div>
+        <div class="class-badge">CBSE & RBSE</div>
+      </div>
+      <div class="subjects-grid">
+        <div class="subject-card"><div class="sub-icon">🔤</div><div><div class="sub-name">English</div><div class="sub-type">Language</div></div></div>
+        <div class="subject-card"><div class="sub-icon">🇮🇳</div><div><div class="sub-name">Hindi</div><div class="sub-type">Language</div></div></div>
+        <div class="subject-card"><div class="sub-icon">🔢</div><div><div class="sub-name">Mathematics</div><div class="sub-type">Core</div></div></div>
+        <div class="subject-card"><div class="sub-icon">🌍</div><div><div class="sub-name">EVS</div><div class="sub-type">Environment</div></div></div>
+        <div class="subject-card"><div class="sub-icon">🎨</div><div><div class="sub-name">Art & Craft</div><div class="sub-type">Creative</div></div></div>
+        <div class="subject-card"><div class="sub-icon">🎵</div><div><div class="sub-name">Music & Rhymes</div><div class="sub-type">Creative</div></div></div>
+        <div class="subject-card"><div class="sub-icon">⚽</div><div><div class="sub-name">Physical Activity</div><div class="sub-type">Sports</div></div></div>
+        <div class="subject-card"><div class="sub-icon">🧩</div><div><div class="sub-name">Moral Values</div><div class="sub-type">Character</div></div></div>
+      </div>
+    </div>
+
+    <!-- CLASS 1-5 -->
+    <div class="class-panel" id="panel-primary">
+      <div class="class-header">
+        <div class="class-header-icon">📖</div>
+        <div><h2>Class 1 – 5 (Primary)</h2><p>Building strong fundamentals in languages, maths, and sciences</p></div>
+        <div class="class-badge">CBSE & RBSE</div>
+      </div>
+      <div class="subjects-grid">
+        <div class="subject-card"><div class="sub-icon">🔤</div><div><div class="sub-name">English</div><div class="sub-type">Core Language</div></div></div>
+        <div class="subject-card"><div class="sub-icon">🇮🇳</div><div><div class="sub-name">Hindi</div><div class="sub-type">Core Language</div></div></div>
+        <div class="subject-card"><div class="sub-icon">🔢</div><div><div class="sub-name">Mathematics</div><div class="sub-type">Core</div></div></div>
+        <div class="subject-card"><div class="sub-icon">🌿</div><div><div class="sub-name">EVS / Science</div><div class="sub-type">Core</div></div></div>
+        <div class="subject-card"><div class="sub-icon">🗺️</div><div><div class="sub-name">Social Studies</div><div class="sub-type">Core</div></div></div>
+        <div class="subject-card"><div class="sub-icon">🖥️</div><div><div class="sub-name">Computer</div><div class="sub-type">Technology</div></div></div>
+        <div class="subject-card"><div class="sub-icon">🎨</div><div><div class="sub-name">Art & Craft</div><div class="sub-type">Creative</div></div></div>
+        <div class="subject-card"><div class="sub-icon">⚽</div><div><div class="sub-name">Physical Education</div><div class="sub-type">Sports</div></div></div>
+        <div class="subject-card"><div class="sub-icon">🕉️</div><div><div class="sub-name">Moral Science</div><div class="sub-type">Character</div></div></div>
+        <div class="subject-card"><div class="sub-icon">🎵</div><div><div class="sub-name">Music</div><div class="sub-type">Creative</div></div></div>
+      </div>
+    </div>
+
+    <!-- CLASS 6-8 -->
+    <div class="class-panel" id="panel-middle">
+      <div class="class-header">
+        <div class="class-header-icon">🔬</div>
+        <div><h2>Class 6 – 8 (Middle School)</h2><p>Expanding knowledge with subject specialization and analytical thinking</p></div>
+        <div class="class-badge">CBSE & RBSE</div>
+      </div>
+      <div class="subjects-grid">
+        <div class="subject-card"><div class="sub-icon">🔤</div><div><div class="sub-name">English</div><div class="sub-type">Language</div></div></div>
+        <div class="subject-card"><div class="sub-icon">🇮🇳</div><div><div class="sub-name">Hindi</div><div class="sub-type">Language</div></div></div>
+        <div class="subject-card"><div class="sub-icon">🔢</div><div><div class="sub-name">Mathematics</div><div class="sub-type">Core</div></div></div>
+        <div class="subject-card"><div class="sub-icon">🔬</div><div><div class="sub-name">Science</div><div class="sub-type">Core</div></div></div>
+        <div class="subject-card"><div class="sub-icon">🗺️</div><div><div class="sub-name">Social Science</div><div class="sub-type">Core</div></div></div>
+        <div class="subject-card"><div class="sub-icon">🌐</div><div><div class="sub-name">Sanskrit</div><div class="sub-type">Language</div></div></div>
+        <div class="subject-card"><div class="sub-icon">🖥️</div><div><div class="sub-name">Computer Science</div><div class="sub-type">Technology</div></div></div>
+        <div class="subject-card"><div class="sub-icon">🎨</div><div><div class="sub-name">Art Education</div><div class="sub-type">Creative</div></div></div>
+        <div class="subject-card"><div class="sub-icon">⚽</div><div><div class="sub-name">Physical Education</div><div class="sub-type">Sports</div></div></div>
+        <div class="subject-card"><div class="sub-icon">🏠</div><div><div class="sub-name">Work Education</div><div class="sub-type">Skill</div></div></div>
+      </div>
+    </div>
+
+    <!-- CLASS 9-10 -->
+    <div class="class-panel" id="panel-secondary">
+      <div class="class-header">
+        <div class="class-header-icon">📐</div>
+        <div><h2>Class 9 – 10 (Secondary)</h2><p>Board-focused preparation with strong conceptual clarity</p></div>
+        <div class="class-badge">CBSE & RBSE Board</div>
+      </div>
+      <div class="subjects-grid">
+        <div class="subject-card"><div class="sub-icon">🔤</div><div><div class="sub-name">English</div><div class="sub-type">Compulsory</div></div></div>
+        <div class="subject-card"><div class="sub-icon">🇮🇳</div><div><div class="sub-name">Hindi</div><div class="sub-type">Compulsory</div></div></div>
+        <div class="subject-card"><div class="sub-icon">🔢</div><div><div class="sub-name">Mathematics</div><div class="sub-type">Compulsory</div></div></div>
+        <div class="subject-card"><div class="sub-icon">🔬</div><div><div class="sub-name">Science</div><div class="sub-type">Compulsory</div></div></div>
+        <div class="subject-card"><div class="sub-icon">🗺️</div><div><div class="sub-name">Social Science</div><div class="sub-type">Compulsory</div></div></div>
+        <div class="subject-card"><div class="sub-icon">🌐</div><div><div class="sub-name">Sanskrit / IT</div><div class="sub-type">Optional</div></div></div>
+        <div class="subject-card"><div class="sub-icon">🖥️</div><div><div class="sub-name">Computer Science</div><div class="sub-type">Optional</div></div></div>
+        <div class="subject-card"><div class="sub-icon">⚽</div><div><div class="sub-name">Physical Education</div><div class="sub-type">Activity</div></div></div>
+      </div>
+      <div class="info-grid">
+        <div class="info-card">
+          <h4>📋 Exam Pattern</h4>
+          <ul>
+            <li><span>📝</span> Term 1 & Term 2 exams</li>
+            <li><span>📊</span> Internal Assessment (20 marks)</li>
+            <li><span>🏆</span> Board Exam (80 marks)</li>
+            <li><span>📚</span> Regular unit tests</li>
+            <li><span>🧪</span> Practical exams (Science)</li>
+          </ul>
+        </div>
+        <div class="info-card">
+          <h4>🎯 Board Preparation</h4>
+          <ul>
+            <li><span>📖</span> Previous year papers practice</li>
+            <li><span>👨‍🏫</span> Extra doubt clearing sessions</li>
+            <li><span>🔁</span> Regular revision classes</li>
+            <li><span>📈</span> Mock board examinations</li>
+            <li><span>✍️</span> Answer writing workshops</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- CLASS 11-12 -->
+    <div class="class-panel" id="panel-senior">
+      <div class="class-header">
+        <div class="class-header-icon">🎓</div>
+        <div><h2>Class 11 – 12 (Senior Secondary)</h2><p>Stream-based advanced learning with career-focused guidance</p></div>
+        <div class="class-badge">CBSE & RBSE Board</div>
+      </div>
+      <div class="streams-grid">
+        <div class="stream-card stream-science">
+          <div class="stream-head"><div class="s-icon">🔬</div><div><h3>Science Stream</h3><p>For future engineers, doctors & researchers</p></div></div>
+          <div class="stream-body"><ul>
+            <li>Physics</li><li>Chemistry</li><li>Mathematics / Biology</li>
+            <li>English (Compulsory)</li><li>Hindi / Computer Science</li><li>Physical Education</li>
+          </ul></div>
+        </div>
+        <div class="stream-card stream-commerce">
+          <div class="stream-head"><div class="s-icon">📊</div><div><h3>Commerce Stream</h3><p>For future CAs, managers & entrepreneurs</p></div></div>
+          <div class="stream-body"><ul>
+            <li>Accountancy</li><li>Business Studies</li><li>Economics</li>
+            <li>English (Compulsory)</li><li>Mathematics / Informatics</li><li>Physical Education</li>
+          </ul></div>
+        </div>
+        <div class="stream-card stream-arts">
+          <div class="stream-head"><div class="s-icon">🎨</div><div><h3>Arts Stream</h3><p>For future writers, lawyers & civil servants</p></div></div>
+          <div class="stream-body"><ul>
+            <li>History</li><li>Geography</li><li>Political Science</li>
+            <li>English (Compulsory)</li><li>Hindi / Economics / Sociology</li><li>Physical Education</li>
+          </ul></div>
+        </div>
+      </div>
+      <div class="info-grid">
+        <div class="info-card">
+          <h4>📋 Exam Pattern</h4>
+          <ul>
+            <li><span>📝</span> Midterm & Final exams</li>
+            <li><span>📊</span> Internal Assessment (30 marks)</li>
+            <li><span>🏆</span> Board Exam (70 marks)</li>
+            <li><span>🧪</span> Practicals (Science/Commerce)</li>
+            <li><span>📁</span> Project submissions</li>
+          </ul>
+        </div>
+        <div class="info-card">
+          <h4>🚀 Career Guidance</h4>
+          <ul>
+            <li><span>🎯</span> JEE / NEET coaching support</li>
+            <li><span>🏛️</span> UPSC / RPSC orientation</li>
+            <li><span>💼</span> CA / MBA pathway counselling</li>
+            <li><span>🌐</span> College application guidance</li>
+            <li><span>👨‍💼</span> Alumni mentorship sessions</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- TEACHING METHODOLOGY -->
+<section style="background:white; padding:60px 40px;">
+  <div class="container">
+    <div style="text-align:center; margin-bottom:40px;">
+      <span class="section-tag">How We Teach</span>
+      <h2>Our Teaching <span>Methodology</span></h2>
+      <p style="color:#666; max-width:600px; margin:12px auto 0;">Learning is most effective when it is engaging, experiential, and student-centered.</p>
+    </div>
+    <div class="method-grid">
+      <div class="method-card reveal reveal-delay-1"><div class="m-icon">🧠</div><h4>Conceptual Learning</h4><p>Focus on understanding over rote memorization with deep concept-building sessions.</p></div>
+      <div class="method-card reveal reveal-delay-2"><div class="m-icon">🔬</div><h4>Practical Labs</h4><p>Hands-on experiments in science, computer, and language labs for real learning.</p></div>
+      <div class="method-card reveal reveal-delay-3"><div class="m-icon">💬</div><h4>Interactive Classes</h4><p>Smart boards, group discussions, and Q&A sessions keep students engaged.</p></div>
+      <div class="method-card reveal reveal-delay-4"><div class="m-icon">📝</div><h4>Regular Assessments</h4><p>Weekly tests and unit exams track progress and identify weak areas early.</p></div>
+      <div class="method-card reveal reveal-delay-5"><div class="m-icon">👨‍👩‍👧</div><h4>Parent Connect</h4><p>Regular PTMs and progress reports keep parents involved in learning journey.</p></div>
+      <div class="method-card reveal reveal-delay-6"><div class="m-icon">🏅</div><h4>Merit Recognition</h4><p>Toppers and achievers are celebrated to motivate every student to excel.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CO-CURRICULAR -->
+<section style="background:#f5f5f5; padding:60px 40px;">
+  <div class="container">
+    <div style="text-align:center; margin-bottom:40px;">
+      <span class="section-tag">Beyond the Classroom</span>
+      <h2>Co-Curricular <span>Activities</span></h2>
+      <p style="color:#666; max-width:600px; margin:12px auto 0;">We nurture well-rounded personalities through a rich variety of activities alongside academics.</p>
+    </div>
+    <div class="cocurr-grid">
+      <div class="cocurr-card"><div class="cc-icon">🏏</div><h5>Cricket</h5><p>District level team</p></div>
+      <div class="cocurr-card"><div class="cc-icon">⚽</div><h5>Football</h5><p>Inter-school tournaments</p></div>
+      <div class="cocurr-card"><div class="cc-icon">🏸</div><h5>Badminton</h5><p>State level players</p></div>
+      <div class="cocurr-card"><div class="cc-icon">🎭</div><h5>Drama Club</h5><p>Annual theatre fest</p></div>
+      <div class="cocurr-card"><div class="cc-icon">🎵</div><h5>Music</h5><p>Vocal & instrumental</p></div>
+      <div class="cocurr-card"><div class="cc-icon">💃</div><h5>Dance</h5><p>Classical & folk</p></div>
+      <div class="cocurr-card"><div class="cc-icon">🎨</div><h5>Art & Painting</h5><p>State competitions</p></div>
+      <div class="cocurr-card"><div class="cc-icon">📰</div><h5>School Magazine</h5><p>Student journalism</p></div>
+      <div class="cocurr-card"><div class="cc-icon">🔭</div><h5>Science Club</h5><p>Experiments & fairs</p></div>
+      <div class="cocurr-card"><div class="cc-icon">📖</div><h5>Book Club</h5><p>Reading & debates</p></div>
+      <div class="cocurr-card"><div class="cc-icon">🌿</div><h5>Eco Club</h5><p>Green campus drives</p></div>
+      <div class="cocurr-card"><div class="cc-icon">🖥️</div><h5>Coding Club</h5><p>Tech & innovation</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section style="background:white; padding:60px 40px;">
+  <div class="container">
+    <div style="text-align:center; margin-bottom:40px;">
+      <span class="section-tag">Our Pride</span>
+      <h2>Academic <span>Achievements</span></h2>
+    </div>
+    <div class="achieve-grid">
+      <div class="achieve-card"><div class="a-num">98%</div><p>Board pass percentage — consistently above state average</p></div>
+      <div class="achieve-card"><div class="a-num">50+</div><p>District toppers produced in the last 5 years</p></div>
+      <div class="achieve-card"><div class="a-num">200+</div><p>Students cleared JEE / NEET in last 3 years</p></div>
+      <div class="achieve-card"><div class="a-num">25+</div><p>Years of academic excellence in Sardarshahr</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="background:linear-gradient(135deg, var(--navy), var(--emerald)); padding:70px 40px; text-align:center;">
+  <div class="container">
+    <h2 style="color:white; font-size:32px; margin-bottom:14px;">Ready to Give Your Child the Best Education?</h2>
+    <p style="color:rgba(255,255,255,0.8); margin-bottom:32px; font-size:16px;">Join Adarsh Vidyalaya — where every child's potential is discovered and developed.</p>
+    <a href="admissions.html" class="btn-primary" style="background:var(--gold); color:#1a1a2e; font-size:16px; padding:16px 40px;">Apply for Admission →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-map">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28815.63!2d74.4418!3d28.4408!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3914a05a49bfffff%3A0x77e5ed0e0e0e0e0e!2sSardarshahr%2C%20Rajasthan%20331403!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin"
+        width="100%" height="280" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    <div class="footer-playlist">
+      <h4>📺 हमारा YouTube Channel</h4>
+      <iframe src="https://www.youtube.com/embed/videoseries?list=PLxxxxYOUR_PLAYLIST_ID" allowfullscreen></iframe>
+    </div>
+  </div>
+  <div class="footer-inner">
+    <div class="footer-col"><h4>🏫 Adarsh Vidyalaya</h4><p>शिक्षा का उत्कृष्ट केंद्र<br>Sardarshahr, Rajasthan<br>A school that shapes futures.</p></div>
+    <div class="footer-col"><h4>Quick Links</h4><a href="about.html">About Us</a><a href="curriculum.html">Curriculum</a><a href="facilities.html">Campus</a><a href="gallery.html">Gallery</a></div>
+    <div class="footer-col"><h4>Admissions</h4><a href="admissions.html">Apply Now</a><a href="testimonials.html">Testimonials</a><a href="contact.html">Contact Us</a></div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p>📍 NH-11, Sardarshahr, Rajasthan</p>
+      <p>📞 97832-62999</p>
+      <p><img src="https://cdn.simpleicons.org/gmail/white" style="width:14px;height:14px;"> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a19090979395e1c2c3d2c4d2c9c8cad2c9c08fc8cf">[email&#160;protected]</a></p>
+      <div class="social-icons">
+        <a href="#" target="_blank"><img src="https://cdn.simpleicons.org/facebook/white" alt="Facebook"></a>
+        <a href="#" target="_blank"><img src="https://cdn.simpleicons.org/instagram/white" alt="Instagram"></a>
+        <a href="#" target="_blank"><img src="https://cdn.simpleicons.org/youtube/white" alt="YouTube"></a>
+        <a href="#" target="_blank"><img src="https://cdn.simpleicons.org/whatsapp/white" alt="WhatsApp"></a>
+        <a href="#" target="_blank"><img src="https://cdn.simpleicons.org/x/white" alt="X (Twitter)"></a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2025 <span>Adarsh Vidyalaya</span> · Sardarshahr, Rajasthan · All Rights Reserved</div>
+</footer>
+
+<!-- BACK TO TOP -->
+<button id="backToTop" onclick="window.scrollTo({top:0, behavior:'smooth'})">↑</button>
+
+<!-- FLOATING WHATSAPP BUTTON -->
+<a href="https://wa.me/919783262999" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+  <span class="whatsapp-tooltip">Chat on WhatsApp</span>
+  <img src="https://cdn.simpleicons.org/whatsapp/white" alt="WhatsApp">
+</a>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
